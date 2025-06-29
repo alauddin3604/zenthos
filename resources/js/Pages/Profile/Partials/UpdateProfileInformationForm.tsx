@@ -6,22 +6,30 @@ import { Transition } from '@headlessui/react'
 import { Link, useForm, usePage } from '@inertiajs/react'
 import { FormEventHandler } from 'react'
 
+interface Props {
+  mustVerifyEmail: boolean
+  status?: string
+  className?: string
+}
+
 export default function UpdateProfileInformation({
   mustVerifyEmail,
   status,
   className = '',
-}: {
-  mustVerifyEmail: boolean
-  status?: string
-  className?: string
-}) {
+}: Readonly<Props>) {
   const user = usePage().props.auth.user
 
-  const { data, setData, patch, errors, processing, recentlySuccessful } =
-    useForm({
-      name: user.name,
-      email: user.email,
-    })
+  const {
+    data,
+    setData,
+    patch,
+    errors,
+    processing,
+    recentlySuccessful,
+  } = useForm({
+    name: user.name,
+    email: user.email,
+  })
 
   const submit: FormEventHandler = (e) => {
     e.preventDefault()

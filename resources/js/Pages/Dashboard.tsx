@@ -1,11 +1,13 @@
-import Authenticated from '@/Layouts/AuthenticatedLayout'
+import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout'
+import MasterLayout from '@/Layouts/MasterLayout'
 import { DashboardBreadcrumbs } from '@/types/dashboard-breadcrumb.type'
-import { ReactNode } from 'react'
+import React, { ReactNode } from 'react'
 
-const Dashboard = () => {
+const Dashboard = (): React.JSX.Element => {
   return (
     <>
       <h1>Dashboard</h1>
+      <p>This is the dashboard page.</p>
     </>
   )
 }
@@ -21,7 +23,10 @@ const breadcrumbs: DashboardBreadcrumbs = [
   }
 ]
 
-Dashboard.layout = (page: ReactNode) =>
-  <Authenticated children={page} breadcrumbs={breadcrumbs} />
+Dashboard.layout = (page: ReactNode): ReactNode => (
+  <MasterLayout>
+    <AuthenticatedLayout breadcrumbs={breadcrumbs}>{page}</AuthenticatedLayout>
+  </MasterLayout>
+)
 
 export default Dashboard

@@ -19,7 +19,6 @@ import {
 import { User } from '@/types'
 import { Link } from '@inertiajs/react'
 import {
-  BadgeCheck,
   Bell,
   ChevronsUpDown,
   CreditCard,
